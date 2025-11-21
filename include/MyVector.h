@@ -1,3 +1,6 @@
+#ifndef MyVector_h
+#define MyVector_h
+
 #include <iostream>
 #include <initializer_list>
 #include <string>
@@ -11,22 +14,28 @@ private:
 	int size {0};
 	int capacity {0};
 public:
-	MyVector();
-	MyVector(int s);
-	MyVector(std::initializer_list<double> ls);
-	~MyVector() {delete[] vec;}
+	MyVector(int s); //costruttore di base
+	MyVector(std::initializer_list<T> ls); //costruttore con initializer_list per permettere l'inizializzazione tramite {1, 2, ecc.}
+	MyVector(const MyVector& copy); //costruttore di copia
+	MyVector(MyVector&& move); //costruttore di spostamento
+	~MyVector() {delete[] vec; size = 0; capacity = 0;} //distruttore
 
 
-	int getSize() const;
-	int getCapacity() const;
-	const T& operator[](int pos) const;
-	T& operator[] (int pos);
+	int getSize() const; //getter di size
+	int getCapacity() const; //getter di capacity
+	const T& operator[](int pos) const; //ovverride dell'operatore [] in lettura
+	T& operator[] (int pos); //ovverride dell'operatore [] in scrittura
+	MyVector& operator=(const MyVector& copy); //assegnamento di copia
+	MyVector& operator=(MyVector&& move); //assegnamento di spostamento
 
-	const T& at(int pos) const;
-	T& at(int pos);
-	void push_back(T val);
-	T pop_back();
-	void reserve(int n);
+	const T& at(int pos) const; //metodo per accedere a un elemento con il controllo del size in lettura
+	T& at(int pos); //metodo per accedere a un elemento con il controllo del size in scrittura
+	void push_back(T val); //metodo per aggiungere un elemento in fondo al vettore
+	T pop_back(); //metodo per rimuovere l'elemento in fondo del vettore
+	void reserve(int n); //metodo per cambiare la capacità del vettore
 };
 
-std::ostream& operator<< (std::ostream& out, const MyVector& vec);
+template <typename T> std::ostream& operator<< (std::ostream& out, const MyVector<T>& vec); //override di << per permettere una scrittura rapida
+
+
+#endif //MyVector_h
