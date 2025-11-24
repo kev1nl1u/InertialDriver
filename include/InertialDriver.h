@@ -10,7 +10,8 @@
 class InertialDriver
 {
     private:
-        const int BUFFER_DIM = 100; // max misure
+        const int BUFFER_DIM = 10; // max misure
+        int index = 0; // indice punta alla prossima posizione da scrivere
         MyVector<Misura> sens[BUFFER_DIM];
 
     public:
