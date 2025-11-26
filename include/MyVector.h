@@ -17,7 +17,7 @@ public:
 	MyVector(std::initializer_list<T> ls); //costruttore con initializer_list per permettere l'inizializzazione tramite {1, 2, ecc.}
 	MyVector(const MyVector& copy); //costruttore di copia
 	MyVector(MyVector&& move); //costruttore di spostamento
-	~MyVector() {delete[] vec; size = 0; capacity = 0;} //distruttore
+	~MyVector() {delete[] vec; size = 0; capacity = 0; vec = nullptr;} //distruttore
 
 
 	int getSize() const; //getter di size

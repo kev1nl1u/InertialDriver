@@ -76,8 +76,8 @@ template <typename T> void MyVector<T>::reserve(int n) {
 	for(int i=0; i < size; i++){
 		newvec[i] = vec[i];
 	}
+	delete[] vec;
 	vec = newvec;
-	delete[] newvec;
 }
 
 //metodo che aggiunge un elemento alla coda del vettore
