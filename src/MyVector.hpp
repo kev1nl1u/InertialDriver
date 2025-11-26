@@ -2,7 +2,7 @@
 //costruttore di base
 template <typename T> MyVector<T>::MyVector(int s){
 	vec = new T[s];
-	size = 0;
+	size = s;
 	capacity = s;
 }
 
@@ -71,7 +71,7 @@ template <typename T> const T& MyVector<T>::at (int pos) const{
 template <typename T> void MyVector<T>::reserve(int n) {
 	if(n < capacity) {return;}
 	capacity = n;
-	double *newvec = new double[capacity];
+	T *newvec = new T[capacity];
 
 	for(int i=0; i < size; i++){
 		newvec[i] = vec[i];
@@ -89,7 +89,7 @@ template <typename T> void MyVector<T>::push_back(T el){
 //metodo che rimuove l'ultimo elemento dal vettore
 template <typename T> T MyVector<T>::pop_back(){
 	if(size == 0){ return 0; }	
-	double el = vec[--size];
+	T el = vec[--size];
 	vec[size] = 0;
 	return el;
 }

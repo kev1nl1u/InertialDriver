@@ -11,3 +11,11 @@ double Lettura::getPitchV() const { return pitch_v; }
 double Lettura::getPitchA() const { return pitch_a; }
 double Lettura::getRollV() const { return roll_v; }
 double Lettura::getRollA() const { return roll_a; }
+
+bool operator== (const Lettura& a, const Lettura& b){
+    if(a.pitch_a == b.pitch_a && a.pitch_v == b.pitch_v
+       && a.roll_a == b.roll_a && a.roll_v == b.roll_v
+       && a.yaw_a == b.yaw_a && a.yaw_v == b.yaw_v) {return true;}
+    
+    return false;
+}

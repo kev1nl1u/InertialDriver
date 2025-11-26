@@ -1,4 +1,4 @@
-#include "../src/MyVector.hpp"
+#include "../include/MyVector.h"
 template <typename T> MyVector<T> a (MyVector<T> b);
 int main()  {
     

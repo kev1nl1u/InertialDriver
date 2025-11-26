@@ -23,6 +23,8 @@ class Lettura{
         double getPitchA() const;
         double getRollV() const;
         double getRollA() const;
+        friend bool operator== (const Lettura& a, const Lettura& b);
 };
 
+#include "../src/Lettura.hpp"
 #endif

@@ -1,9 +1,8 @@
-#ifndef MyVector_h
-#define MyVector_h
+#ifndef MYVECTOR_H
+#define MYVECTOR_H
 
 #include <iostream>
 #include <initializer_list>
-#include <string>
 
 template <typename T>
 
@@ -38,4 +37,6 @@ public:
 template <typename T> std::ostream& operator<< (std::ostream& out, const MyVector<T>& vec); //override di << per permettere una scrittura rapida
 
 
+
+#include "../src/MyVector.hpp"
 #endif //MyVector_h
