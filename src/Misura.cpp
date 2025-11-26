@@ -1,4 +1,7 @@
-#include "Misura.h"
+#include "../include/Misura.h"
+#include "../include/Lettura.h"
+#include <stdexcept>
+#include <string>
 
 Misura::Misura() {
     // inizializza le letture a 0

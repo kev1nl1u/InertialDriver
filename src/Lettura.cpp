@@ -1,4 +1,4 @@
-#include "Lettura.h"
+#include "../include/Lettura.h"
 
 Lettura::Lettura()
     : yaw_v(0), yaw_a(0), pitch_v(0), pitch_a(0), roll_v(0), roll_a(0) {}

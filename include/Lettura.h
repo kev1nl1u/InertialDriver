@@ -3,6 +3,9 @@
  * Lettura di un sensore inerziale che fornisce 6 valori di tipo double
  */
 
+#ifndef LETTURA_H
+#define LETTURA_H
+
 class Lettura{
     private:
         double yaw_v;
@@ -21,3 +24,5 @@ class Lettura{
         double getRollV() const;
         double getRollA() const;
 };
+
+#endif

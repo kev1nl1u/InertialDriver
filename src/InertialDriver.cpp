@@ -1,6 +1,6 @@
 #include <iostream>
-#include "InertialDriver.h"
-#include "MyVector.h"
+#include "../include/InertialDriver.h"
+#include "../include/MyVector.h"
 
 using namespace std;
 
@@ -29,16 +29,31 @@ void InertialDriver::clear_buffer(){
     index = 0;
 }
 
-int InertialDriver::get_reading(int misura_index) {
-    // restituisce una lettura specifica da una misura specifica
+Misura InertialDriver::get_reading(int misura_index) {
+    // restituisce una misura dal buffer
     if(misura_index < 0 || misura_index >= BUFFER_DIM)
         throw std::out_of_range("Misura index out of bounds");
     return sens[misura_index];
 }
 
-std::ostream& InertialDriver::operator<<(std::ostream& out) {
-    // stampa l'ultima misura
-    int last_index = (index - 1 + BUFFER_DIM) % BUFFER_DIM; // index punta alla cella vuota
-    out << "Ultima misura: " << sens[last_index] << std::endl; 
+std::ostream& operator<<(std::ostream& out, const InertialDriver& driver) {
+    if (driver.index == 0) {
+        out << "Buffer vuoto";
+        return out;
+    }
+    int last_index = (driver.index - 1 + InertialDriver::BUFFER_DIM) % InertialDriver::BUFFER_DIM;
+    const Misura& m = driver.sens[last_index];
+    out << "Ultima misura (17 letture):";
+    for(int i=0; i<17; ++i) {
+        Lettura l = m.getLettura(i);
+        out << " [" << i
+            << ": yaw_v=" << l.getYawV()
+            << ", yaw_a=" << l.getYawA()
+            << ", pitch_v=" << l.getPitchV()
+            << ", pitch_a=" << l.getPitchA()
+            << ", roll_v=" << l.getRollV()
+            << ", roll_a=" << l.getRollA() << "]";
+    }
+    return out;
 }
 

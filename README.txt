@@ -1,0 +1,1 @@
+Questo README descrive le attività di ciascun membro del gruppo. Questo file non è la documentazione, ma un elenco di note aggiuntive per chi corregge, per esempio problemi riscontrati e non risolti.
